@@ -2,11 +2,13 @@
   "version": 3,
   "file": "bundle.css",
   "sources": [
+    "..\\src\\Navbar.svelte",
     "..\\src\\Player.svelte"
   ],
   "sourcesContent": [
+    "<div class=\"navbar bg-success\">\r\n    <h1>ScoreBoard App with</h1>\r\n    <img src=\"img/svelte-logo-horizontal.svg\" alt=\"Logo\">\r\n</div>\r\n\r\n<style>\r\n    img {\r\n        width: 20%;\r\n        margin-left: 1rem;\r\n    }\r\n</style>",
     "<script>\r\n    import { createEventDispatcher } from 'svelte';\r\n\r\n    const dispatch = createEventDispatcher()\r\n\r\n\texport let name;\r\n\texport let points;\r\n\tlet showControls = false;\r\n\r\n\tconst addPoint = () => points += 1;\r\n\tconst removePoint = () => points -= 1;\r\n\r\n    const toggleControls = () => showControls = !showControls;\r\n    \r\n    const onDelete = () => dispatch('removeplayer', name);\r\n</script>\r\n\r\n<style>\r\n\th1 {\r\n        color: var(--primary-color);\r\n\t}\r\n\r\n\th3 {\r\n        margin: 1rem 2rem;\r\n        font-size: 2rem;\r\n\t}\r\n</style>\r\n\r\n<div class=\"card\">\r\n    <h1>\r\n        {name}\r\n        <button class=\"btn btn-success\" on:click={toggleControls}>\r\n            {#if showControls}Hide Controls{:else}Show Controls{/if}\r\n        </button>\r\n        <button class=\"btn btn-danger\" on:click={onDelete}>Delete Player</button>\r\n    </h1>\r\n    <h3>{points}</h3>\r\n    \r\n    {#if showControls}\r\n        <span>Add/Remove Points: </span>\r\n        <button class=\"btn\" on:click={addPoint}>+1</button>\r\n        <button class=\"btn btn-dark\" on:click={removePoint}>-1</button>\r\n\r\n        <input type=\"number\" bind:value={points}>\r\n    {/if}\r\n</div>\r\n\r\n"
   ],
   "names": [],
-  "mappings": "AAkBC,EAAE,cAAC,CAAC,AACG,KAAK,CAAE,IAAI,eAAe,CAAC,AAClC,CAAC,AAED,EAAE,cAAC,CAAC,AACG,MAAM,CAAE,IAAI,CAAC,IAAI,CACjB,SAAS,CAAE,IAAI,AACtB,CAAC"
+  "mappings": "AAMI,GAAG,eAAC,CAAC,AACD,KAAK,CAAE,GAAG,CACV,WAAW,CAAE,IAAI,AACrB,CAAC;ACSJ,EAAE,cAAC,CAAC,AACG,KAAK,CAAE,IAAI,eAAe,CAAC,AAClC,CAAC,AAED,EAAE,cAAC,CAAC,AACG,MAAM,CAAE,IAAI,CAAC,IAAI,CACjB,SAAS,CAAE,IAAI,AACtB,CAAC"
 }
